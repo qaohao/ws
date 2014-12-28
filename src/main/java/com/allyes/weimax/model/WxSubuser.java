@@ -3,7 +3,7 @@ package com.allyes.weimax.model;
 import java.util.Date;
 
 /**
- * 公众平台粉丝表。
+ * 微信公众号粉丝表。
  * 
  * @author qaohao
  */
