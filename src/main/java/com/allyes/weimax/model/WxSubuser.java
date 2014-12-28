@@ -7,7 +7,7 @@ import java.util.Date;
  * 
  * @author qaohao
  */
-public class Subuser {
+public class WxSubuser {
 	private long id;
 	private long wxServiceAccountId;
 	private String unionOpenId;

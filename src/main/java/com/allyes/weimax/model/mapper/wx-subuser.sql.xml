@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="subuserSqlMapper">
+<mapper namespace="wxSubuserSqlMapper">
 	<sql id="base_column">
 		ID as id,
 		WxServiceAccountId as wxServiceAccountId,
@@ -25,7 +25,7 @@
 		Note as note
 	</sql>
 
-	<select id="findOne" resultType="Subuser">
+	<select id="findOne" resultType="WxSubuser">
 		select
 		<include refid="base_column" />
 		from wcs_subuser 
