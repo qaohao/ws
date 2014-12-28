@@ -1,11 +1,16 @@
 package com.allyes.weimax.service;
 
 /**
- * 微信公众平台同步服务类。
+ * 微信公众号同步服务类。
  * 
  * @author qaohao
  */
 public interface IWcsSyncService {
+	/**
+	 * 同步分组信息。
+	 */
+	void syncGroup();
+	
 	/**
 	 * 同步公众号粉丝信息。
 	 */
