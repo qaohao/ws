@@ -24,6 +24,10 @@ public class GenericMyBatisDao extends SqlSessionDaoSupport {
 		getSqlSession().delete(key, object);
 	}
 
+	public <T> T get(String key) {
+		return (T) getSqlSession().selectOne(key);
+	}
+	
 	public <T> T get(String key, Object params) {
 		return (T) getSqlSession().selectOne(key, params);
 	}
