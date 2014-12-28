@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="subuserSqlMapper">
+	<sql id="base_column">
+		ID as id,
+		WxServiceAccountId as wxServiceAccountId,
+		UnionOpenId as unionOpenId,
+		OpenId as openId,
+		HashOpenId as hashOpenId,
+		UnionId as unionId,
+		IsSubscribed as isSubscribed,
+		Nickname as nickname,
+		Sex as sex,
+		Language as language,
+		City as city,
+		Province as province,
+		Country as country,
+		HeadImgUrl as headImgUrl,
+		SubscribeTime as subscribeTime,
+		LastUpdate as lastUpadte,
+		ChannelId as channelId,
+		RealLocation as RealLocation,
+		GroupId as groupId,
+		Address as address,
+		Note as note
+	</sql>
+
+	<select id="findOne" resultType="Subuser">
+		select
+		<include refid="base_column" />
+		from wcs_subuser 
+		limit 1
+	</select>
+
+</mapper>
