@@ -13,7 +13,7 @@
 	default-autowire="byName" default-lazy-init="true">
 	
 	<!-- mybatis Dao -->
-	<bean id="iBatisDao" class="com.mediacross.adnetwork.base.dao.GenericIBatisDao" />
+	<bean id="MyBatisDao" class="com.allyes.weimax.support.mybatis.GenericMyBatisDao" />
 	
 	<!-- 数据源配置,使用应用内的DBCP数据库连接池 -->
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
