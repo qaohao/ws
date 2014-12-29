@@ -55,4 +55,11 @@
 		auth_status as authStatus,
 		alliance
 	</sql>
+	
+	<select id="findByAccountType" parameterType="int" resultType="WxUser">
+		select
+		<include refid="base_column" />
+		from tp_wxuser 
+		where accounttype = #{accesstoken}
+	</select>
 </mapper>

@@ -11,7 +11,7 @@
 		comment
 	</sql>
 	
-	<insert id="addGroups" parameterType="HashMap" useGeneratedKeys="true">
+	<insert id="batchAdd" parameterType="HashMap" useGeneratedKeys="true">
 		INSERT INTO wx_group
 			(name, token, enable, status, create_time)
 		VALUES

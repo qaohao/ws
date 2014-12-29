@@ -26,10 +26,35 @@
 	</sql>
 
 	<select id="findOne" resultType="WxSubuser">
-		select
+		SELECT
 		<include refid="base_column" />
-		from wcs_subuser 
-		limit 1
+		FROM wcs_subuser 
+		LIMIT 1
 	</select>
+	
+	<insert id="batchAdd" parameterType="HashMap">
+		<bind name="MAN" value="1"/>
+		<bind name="WOMEN" value="2"/>
+		<bind name="UNKNOWN" value="0"/>
+		INSERT INTO `wcs_subuser`
+			(WxServiceAccountId, UnionOpenId, OpenId, HashOpenId, UnionId,
+			 IsSubscribed, Nickname, Sex, Language,City,Province, Country,
+			 HeadImgUrl, SubscribeTime, LastUpdate,ChannelId,RealLocation,
+			 GroupId,Address,Note) 
+		VALUES
+			<foreach item="subuser" collection="subuserList" separator=",">
+		    (#{accountId}, null, #{subuser.openId}, MD5(#{subuser.openId}),
+		     #{subuser.unionId}, #{subuser.subscribe}, #{subuser.nickname},
+		     <choose>
+				<when test="subuser.sex == '男'.toString()">1</when>
+				<when test="subuser.sex == '女'.toString()">2</when>
+				<when test="subuser.sex == '未知'.toString()">0</when>
+				<otherwise>0</otherwise>
+			 </choose>,
+		     #{subuser.language},#{subuser.city},      #{subuser.province},
+		     #{subuser.country}, #{subuser.headImgUrl},#{subuser.subscribeTime}, 
+		     NOW(),null,null,null,null,null)
+			</foreach>
+	</insert>
 
 </mapper>

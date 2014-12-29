@@ -2,6 +2,9 @@ package com.allyes.weimax.support.weixin;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.Executor;
+
+import org.apache.log4j.Logger;
 
 import me.chanjar.weixin.common.exception.WxErrorException;
 import me.chanjar.weixin.mp.api.WxMpConfigStorage;
@@ -13,6 +16,7 @@ import me.chanjar.weixin.mp.bean.result.WxMpUser;
 import me.chanjar.weixin.mp.bean.result.WxMpUserList;
 
 import com.allyes.weimax.Constants;
+import com.allyes.weimax.service.impl.WcsSyncService;
 
 /**
  * 微信公众平台用户接口帮助类。
@@ -20,6 +24,8 @@ import com.allyes.weimax.Constants;
  * @author qaohao
  */
 public class WxSubuserHelper {
+	private static final Logger LOG = Logger.getLogger(WxSubuserHelper.class);
+	
 	/*
 	 * 创建 WxMpInMemoryConfigStorage对象。
 	 */
@@ -92,11 +98,14 @@ public class WxSubuserHelper {
 			List<String> openIdList) {
 		WxMpService wxMpService = new WxMpServiceImpl();
 		wxMpService.setWxMpConfigStorage(wxConfig);
-
+		
+		System.out.println(openIdList.size()+","+openIdList);
 		List<WxMpUser> userList = new LinkedList<WxMpUser>();
 		for (String openId : openIdList) {
 			try {
-				userList.add(wxMpService.userInfo(openId, Constants.LANG));
+				WxMpUser subuser = wxMpService.userInfo(openId, Constants.LANG);
+				userList.add(subuser);
+				LOG.info(subuser);
 			} catch (WxErrorException e) {
 				e.printStackTrace();
 			}
