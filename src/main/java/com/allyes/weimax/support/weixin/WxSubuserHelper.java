@@ -47,7 +47,7 @@ public class WxSubuserHelper {
 			groupList = wxMpService.groupGet();
 		} catch (WxErrorException e) {
 			e.printStackTrace();
-		}
+		} 
 		return groupList;
 	}
 	
@@ -75,7 +75,8 @@ public class WxSubuserHelper {
 		wxMpService.setWxMpConfigStorage(wxConfig);
 		try {
 			WxMpUserList userList = wxMpService.userList(Constants.EMPTY);
-
+			LOG.info(userList.getTotal());
+			
 			int total = userList.getTotal();
 			int count = userList.getCount();
 			while (count < total) {

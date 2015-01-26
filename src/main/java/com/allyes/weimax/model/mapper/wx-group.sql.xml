@@ -16,7 +16,7 @@
 			(name, token, enable, status, create_time)
 		VALUES
 		<foreach item="group" collection="groupList" separator=",">
-			(#{group.name}, "", 1, 1, NOW())
+			(#{group.name}, #{token}, 1, 1, NOW())
 		</foreach>
 	</insert>
 	

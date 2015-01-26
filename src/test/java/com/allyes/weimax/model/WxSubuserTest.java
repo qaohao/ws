@@ -24,7 +24,14 @@ public class WxSubuserTest extends SpringTestCase {
 		WxSubuser wxSubuser = mybatisDao.get("wxSubuserSqlMapper.findOne");
 		System.out.println(wxSubuser);
 	}
-
+	
+	@Test
+	public void testGetByAccountId() {
+		List<WxSubuser> wxSubuserList = mybatisDao.getList(
+				"wxSubuserSqlMapper.findByAccountId", 32);
+		System.out.println(wxSubuserList.size());
+	}
+	
 	@Test
 	public void testBatchAdd() {
 		long accountId = 32;

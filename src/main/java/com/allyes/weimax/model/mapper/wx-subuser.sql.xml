@@ -32,6 +32,13 @@
 		LIMIT 1
 	</select>
 	
+	<select id="findByAccountId" parameterType="Long" resultType="WxSubuser">
+		SELECT
+		<include refid="base_column" />
+		FROM wcs_subuser t 
+		WHERE t.WxServiceAccountId = #{accountId}
+	</select>
+	
 	<insert id="batchAdd" parameterType="HashMap">
 		<bind name="MAN" value="1"/>
 		<bind name="WOMEN" value="2"/>
